@@ -9,26 +9,25 @@ namespace HomeWorkReadint
     class Program
     {
         static void Main(string[] args)
-        {            
-            int number = 0;
-            ChecksNumbers(ref number);
-            Console.WriteLine($"Число {number} верное.");
+        {
+            int number = 0;            
+            Console.WriteLine("Число " + GetNumber(number) + " верное.");
         }
 
-        static void ChecksNumbers(ref int number)
+        static int GetNumber(int number)
         {
-            bool done = false;
-            while ( done != true)
+            bool numberFound = false;
+            while (numberFound == false)
             {
                 Console.WriteLine($"Для завершения программы. Введите  число от {int.MinValue}  до {int.MaxValue}");
                 string userInput = Console.ReadLine();
-
                 if (int.TryParse(userInput, out int result) == true)
                 {
-                    number = result;
-                    done = true;
-                }                
+                    number = Convert.ToInt32(userInput);
+                    numberFound = true;
+                }
             }
+            return number;
         }
     }
 }
