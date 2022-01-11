@@ -9,20 +9,26 @@ namespace HomeWorkReadint
     class Program
     {
         static void Main(string[] args)
-        {
-            string userInput = "";
-            Console.WriteLine($"Для завершения программы. Введите  число от {int.MinValue}  до {int.MaxValue}");
+        {            
+            int number = 0;
+            ChecksNumbers(ref number);
+            Console.WriteLine($"Число {number} верное.");
+        }
 
-            while (true)
+        static void ChecksNumbers(ref int number)
+        {
+            bool done = false;
+            while ( done != true)
             {
-                userInput = Console.ReadLine();
+                Console.WriteLine($"Для завершения программы. Введите  число от {int.MinValue}  до {int.MaxValue}");
+                string userInput = Console.ReadLine();
+
                 if (int.TryParse(userInput, out int result) == true)
                 {
-                    Console.WriteLine($" Число  {userInput} введено верно.");
-                    break;
-                }
-                Console.WriteLine($"Повторите попытку. Допустимые числа от {int.MinValue}  до {int.MaxValue}");
-            }            
+                    number = result;
+                    done = true;
+                }                
+            }
         }
     }
 }
